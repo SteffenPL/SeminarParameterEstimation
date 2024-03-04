@@ -16,7 +16,7 @@ end
 
 # ╔═╡ 22f44ea0-d89f-11ee-3e98-a3767145e2f1
 begin
-	using ModelingToolkit, OrdinaryDiffEq, Catalyst, DiffEqParamEstim 
+	using ModelingToolkit, OrdinaryDiffEq, DiffEqParamEstim 
 	using Optimization, ForwardDiff, OptimizationOptimJL, OptimizationBBO
 	using Plots, StatsPlots
 	using CSV, DataFrames
@@ -24,12 +24,16 @@ begin
 	using PlutoUI
 	using LinearAlgebra, TOML
 
-	@parameters t
-	D = Differential(t)  # d/dt operator
 end
 
 # ╔═╡ 4cec4b62-aed0-43b8-9abc-c6428d49c9fb
 md"# ModelingToolkit ODE playground"
+
+# ╔═╡ 609ee222-bf0c-416e-bb30-b6c75c1281cc
+@parameters t
+
+# ╔═╡ efa8de40-3294-4fab-a639-55c2aa06da81
+D = Differential(t)  # d/dt operator
 
 # ╔═╡ 454719ce-6e02-45e6-b56e-ba79d531f7d0
 md"""## Step 1: Define the ODE
@@ -208,7 +212,6 @@ Local optimisation solver:
 PLUTO_PROJECT_TOML_CONTENTS = """
 [deps]
 CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
-Catalyst = "479239e8-5488-4da2-87a7-35f2df7eef83"
 DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
 DiffEqParamEstim = "1130ab10-4a5a-5621-a13d-e4788d82bd4c"
 ForwardDiff = "f6369f11-7733-5829-9624-2563aa707210"
@@ -223,22 +226,6 @@ PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
 StatsPlots = "f3b207a7-027a-5e70-b257-86293d7955fd"
 TOML = "fa267f1f-6049-4f14-aa54-33bafae1ed76"
 Turing = "fce5fe82-541a-59a6-adf8-730c64b5f9a0"
-
-[compat]
-CSV = "~0.10.12"
-Catalyst = "~13.5.1"
-DataFrames = "~1.6.1"
-DiffEqParamEstim = "~2.2.0"
-ForwardDiff = "~0.10.36"
-ModelingToolkit = "~8.75.0"
-Optimization = "~3.22.0"
-OptimizationBBO = "~0.2.1"
-OptimizationOptimJL = "~0.2.2"
-OrdinaryDiffEq = "~6.74.0"
-Plots = "~1.40.1"
-PlutoUI = "~0.7.58"
-StatsPlots = "~0.15.7"
-Turing = "~0.30.5"
 """
 
 # ╔═╡ 00000000-0000-0000-0000-000000000002
@@ -247,7 +234,7 @@ PLUTO_MANIFEST_TOML_CONTENTS = """
 
 julia_version = "1.10.0"
 manifest_format = "2.0"
-project_hash = "6e62d83641d5379d496b508f4e7032a7ebf5bad7"
+project_hash = "42b54507926b28a936b4d31e06444fd8b6c99eef"
 
 [[deps.ADTypes]]
 git-tree-sha1 = "41c37aa88889c171f1300ceac1313c06e891d245"
@@ -289,16 +276,17 @@ uuid = "1520ce14-60c1-5f80-bbc7-55ef81b5835c"
 version = "0.4.5"
 
 [[deps.Accessors]]
-deps = ["CompositionsBase", "ConstructionBase", "Dates", "InverseFunctions", "LinearAlgebra", "MacroTools", "Test"]
-git-tree-sha1 = "cb96992f1bec110ad211b7e410e57ddf7944c16f"
+deps = ["CompositionsBase", "ConstructionBase", "Dates", "InverseFunctions", "LinearAlgebra", "MacroTools", "Markdown", "Test"]
+git-tree-sha1 = "c0d491ef0b135fd7d63cbc6404286bc633329425"
 uuid = "7d9f7c33-5ae7-4f3b-8dc6-eff91059b697"
-version = "0.1.35"
+version = "0.1.36"
 
     [deps.Accessors.extensions]
     AccessorsAxisKeysExt = "AxisKeys"
     AccessorsIntervalSetsExt = "IntervalSets"
     AccessorsStaticArraysExt = "StaticArrays"
     AccessorsStructArraysExt = "StructArrays"
+    AccessorsUnitfulExt = "Unitful"
 
     [deps.Accessors.weakdeps]
     AxisKeys = "94b1ba4f-4ee9-5380-92f1-94cde586c3c5"
@@ -306,6 +294,7 @@ version = "0.1.35"
     Requires = "ae029012-a4dd-5104-9daa-d747884805df"
     StaticArrays = "90137ffa-7385-5640-81b9-e52037218182"
     StructArrays = "09ab397b-f2b6-538f-b94a-2f83cf4a842a"
+    Unitful = "1986cc42-f94f-5a68-af5c-568840ba703d"
 
 [[deps.Adapt]]
 deps = ["LinearAlgebra", "Requires"]
@@ -553,9 +542,9 @@ version = "3.4.1"
 
 [[deps.CSV]]
 deps = ["CodecZlib", "Dates", "FilePathsBase", "InlineStrings", "Mmap", "Parsers", "PooledArrays", "PrecompileTools", "SentinelArrays", "Tables", "Unicode", "WeakRefStrings", "WorkerUtilities"]
-git-tree-sha1 = "679e69c611fff422038e9e21e270c4197d49d918"
+git-tree-sha1 = "a44910ceb69b0d44fe262dd451ab11ead3ed0be8"
 uuid = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
-version = "0.10.12"
+version = "0.10.13"
 
 [[deps.Cairo_jll]]
 deps = ["Artifacts", "Bzip2_jll", "CompilerSupportLibraries_jll", "Fontconfig_jll", "FreeType2_jll", "Glib_jll", "JLLWrappers", "LZO_jll", "Libdl", "Pixman_jll", "Pkg", "Xorg_libXext_jll", "Xorg_libXrender_jll", "Zlib_jll", "libpng_jll"]
@@ -568,18 +557,6 @@ deps = ["LinearAlgebra"]
 git-tree-sha1 = "f641eb0a4f00c343bbc32346e1217b86f3ce9dad"
 uuid = "49dc2e85-a5d0-5ad3-a950-438e2897f1b9"
 version = "0.5.1"
-
-[[deps.Catalyst]]
-deps = ["DataStructures", "DiffEqBase", "DocStringExtensions", "Graphs", "JumpProcesses", "LaTeXStrings", "Latexify", "LinearAlgebra", "MacroTools", "ModelingToolkit", "Parameters", "Reexport", "Requires", "SparseArrays", "SymbolicUtils", "Symbolics", "Unitful"]
-git-tree-sha1 = "8e7e57c2ed4ecfb798f5a8cb230a9dd84765e7b1"
-uuid = "479239e8-5488-4da2-87a7-35f2df7eef83"
-version = "13.5.1"
-
-    [deps.Catalyst.extensions]
-    CatalystHomotopyContinuationExtension = "HomotopyContinuation"
-
-    [deps.Catalyst.weakdeps]
-    HomotopyContinuation = "f213a82b-91d6-5c5d-acf7-10f1c761b327"
 
 [[deps.ChainRules]]
 deps = ["Adapt", "ChainRulesCore", "Compat", "Distributed", "GPUArraysCore", "IrrationalConstants", "LinearAlgebra", "Random", "RealDot", "SparseArrays", "SparseInverseSubset", "Statistics", "StructArrays", "SuiteSparse"]
@@ -3214,7 +3191,9 @@ version = "1.4.1+1"
 
 # ╔═╡ Cell order:
 # ╟─4cec4b62-aed0-43b8-9abc-c6428d49c9fb
-# ╠═22f44ea0-d89f-11ee-3e98-a3767145e2f1
+# ╟─22f44ea0-d89f-11ee-3e98-a3767145e2f1
+# ╠═609ee222-bf0c-416e-bb30-b6c75c1281cc
+# ╠═efa8de40-3294-4fab-a639-55c2aa06da81
 # ╟─454719ce-6e02-45e6-b56e-ba79d531f7d0
 # ╠═8d2e7d95-619a-48b7-9917-07ab9b5f00ed
 # ╠═9bf202ce-41f5-4e5e-99a1-01c225f9eed8
